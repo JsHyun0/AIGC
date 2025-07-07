@@ -1,5 +1,12 @@
 wandb
 wandb/*
+
 data_out/*
 __pycache__/*
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+**/__pycache__/
+
 data_out/
