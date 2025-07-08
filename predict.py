@@ -12,8 +12,8 @@ from utils.scrn_model import SCRNModel
 from safetensors.torch import load_file
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 cfg = {
-    'model_name': 'klue/bert-base',
-    'model_dir': 'data_out/scrn_data/checkpoint-9718',
+    'model_name': 'klue/roberta-base',
+    'model_dir': 'data_out/scrn_data/checkpoint-87816',
     'batch_size': 16,
     'max_length': 512
 }
@@ -57,7 +57,7 @@ def main():
     model.to(device)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-    test_path = "/home/hyun/DACON/TCN/data/test.csv"
+    test_path = "/home/jiseung/TCN/data/test.csv"
     test_df = pd.read_csv(test_path)
 
     texts = test_df['paragraph_text'].tolist()
@@ -90,7 +90,7 @@ def main():
         'generated': scores
     })
 
-    submission_path = '/home/hyun/DACON/TCN/outputs/submissions/scrn_submission.csv'
+    submission_path = '/home/jiseung/TCN/outputs/submissions/scrn_roberta_submission.csv'
     os.makedirs(os.path.dirname(submission_path), exist_ok=True)
     submission.to_csv(submission_path, index=False)
 

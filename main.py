@@ -331,7 +331,7 @@ def main():
     # Load dataset
     #####################################################################################
     # 데이터 로드 및 분할
-    train_file_path = "/home/hyun/DACON/TCN/data/pre_train.csv"
+    train_file_path = "/home/jiseung/TCN/data/pre_train.csv"
     
     tokenizer = AutoTokenizer.from_pretrained(model_args.model_name_or_path)
     data = pd.read_csv(train_file_path)

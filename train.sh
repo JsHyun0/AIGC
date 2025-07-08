@@ -1,9 +1,10 @@
-# metric-based detectors: ["Log-Likelihood", "Log-Rank", "Entropy", "GLTR"]
-# model-based detectors: ['bert-base', 'roberta-base', 'deberta-base', 'ChatGPT-Detector', 'flooding', 'rdrop', 'ranmask', 'scrn']
-
+#!/bin/bash
+#SBATCH --gpus=1
+#SBATCH --cpus-per-gpu=8
+#SBATCH --chdir=.
 export DATASET_ABBR=mixed-source
 export MODEL_ABBR=scrn
-export BERT_MODEL=klue/bert-base # just used for huggingface wrapped model
+export BERT_MODEL=klue/roberta-base # just used for huggingface wrapped model
 
 python3 -u main.py  \
 --do_train True \
@@ -25,5 +26,5 @@ python3 -u main.py  \
 --gradient_accumulation_steps 1 \
 --metric_base_model_name_or_path gpt2 \
 --model_name_or_path ${BERT_MODEL} \
---data_files /home/hyun/DACON/TCN/data \
+--data_files /home/jiseung/TCN/data \
 --output_dir ./data_out/${MODEL_ABBR}
